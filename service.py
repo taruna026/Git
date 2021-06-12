@@ -21,3 +21,7 @@ def getPersonInfoById(id):
 def getPersonInfoByName(name):
     data = requests.get(f"{PIPERDRIVE_BASE_URL}find?term={name}&api_token={API_KEY}")
     return json.loads(data.content)
+
+def updatePersonById(id, data):
+    data = requests.put(f"{PIPERDRIVE_BASE_URL}{id}?api_token={API_KEY}", data)
+    return json.loads(data.content)
