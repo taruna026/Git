@@ -24,6 +24,7 @@ def getPersonInfoByName(name):
 
 def getCreatedPersonDataAndCustomField(data):
     data['is_new_person']='true'
+    print('======', json.dumps(data))
     return data
 
 def getUpdatedPersonDataAndCustomField(data):
