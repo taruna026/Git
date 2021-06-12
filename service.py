@@ -4,7 +4,7 @@ import os
 import requests
 
 load_dotenv()
-API_KEY=os.environ.get("API_KEY")
+API_KEY='243772d23c4e2c22e4fcd63a487190f5b3823f06'
 
 PIPERDRIVE_PERSON_BASE_URL='https://api.pipedrive.com/v1/persons/'
 PIPERDRIVE_PERSON_FIELD_BASE_URL='https://api.pipedrive.com/v1/personFields'
