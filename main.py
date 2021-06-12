@@ -15,7 +15,7 @@ def func():
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def service():
-    print('===shakndka', json.loads(request.data))
+    print('===shakndka', request.method)
     return 'HI'
 
     
