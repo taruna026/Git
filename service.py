@@ -4,10 +4,10 @@ import os
 import requests
 
 load_dotenv()
-
-PIPERDRIVE_PERSON_BASE_URL=os.environ.get("PIPERDRIVE_PERSON_BASE_URL")
-PIPERDRIVE_PERSON_FIELD_BASE_URL=os.environ.get("PIPERDRIVE_PERSON_FIELD_BASE_URL")
 API_KEY=os.environ.get("API_KEY")
+
+PIPERDRIVE_PERSON_BASE_URL='https://api.pipedrive.com/v1/persons/'
+PIPERDRIVE_PERSON_FIELD_BASE_URL='https://api.pipedrive.com/v1/personFields'
 
 def getPersonInfo(request):
     if request.args.get('id'):
