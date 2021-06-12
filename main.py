@@ -1,6 +1,6 @@
 from flask import Flask, request, json
 import os
-from service import getPersonInfo, updatePersonById, getCreatedPersonDataAndCustomField, getUpdatedPersonDataAndCustomField
+from service import getPersonInfo, updatePersonById, getCreatedPersonDataAndCustomField, getUpdatedPersonDataAndCustomField, getCustomFieldInfo
 
 app = Flask(__name__)
 
@@ -19,6 +19,7 @@ def service():
 @app.route('/webhook/updated', methods=['POST'])
 def fun():
     return getUpdatedPersonDataAndCustomField(json.loads(request.data))
+
 
     
 if __name__ == '__main__':
