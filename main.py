@@ -13,6 +13,11 @@ def func():
     elif request.method=='PUT':
         return updatePersonById(request.args.get('id'), json.loads(request.data))
 
+@app.route('/webhook', methods=['GET', 'POST'])
+def service():
+    print('===shakndka', json.loads(request.data))
+    return 'HI'
+
     
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
