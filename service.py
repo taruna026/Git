@@ -22,6 +22,14 @@ def getPersonInfoByName(name):
     data = requests.get(f"{PIPERDRIVE_BASE_URL}find?term={name}&api_token={API_KEY}")
     return json.loads(data.content)
 
+def getCreatedPersonDataAndCustomField(data):
+    data['is_new_person']='true'
+    return data
+
+def getUpdatedPersonDataAndCustomField(data):
+    data['is_new_person']='false'
+    return data
+
 def updatePersonById(id, data):
-    data = requests.put(f"{PIPERDRIVE_BASE_URL}{id}?api_token={API_KEY}", data)
-    return json.loads(data.content)
+    data.is_new_person=false
+    return data

@@ -1,22 +1,24 @@
 from flask import Flask, request, json
 import os
-from service import getPersonInfo, updatePersonById
+from service import getPersonInfo, updatePersonById, getCreatedPersonDataAndCustomField, getUpdatedPersonDataAndCustomField
 
 app = Flask(__name__)
 
 
 @app.route('/person', methods=['GET','PUT'])
 def func():
-    print('===============')
     if request.method=='GET':
         return getPersonInfo(request)
     elif request.method=='PUT':
         return updatePersonById(request.args.get('id'), json.loads(request.data))
 
-@app.route('/webhook', methods=['GET', 'POST'])
+@app.route('/webhook/created', methods=['POST'])
 def service():
-    print('===shakndka', json.loads(request.data))
-    return json.loads(request.data)
+    return getCreatedPersonDataAndCustomField(json.loads(request.data))
+
+@app.route('/webhook/updated', methods=['POST'])
+def fun():
+    return getUpdatedPersonDataAndCustomField(json.loads(request.data))
 
     
 if __name__ == '__main__':
