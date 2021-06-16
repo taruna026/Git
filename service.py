@@ -4,7 +4,7 @@ import os
 import requests
 
 load_dotenv()
-API_KEY='243772d23c4e2c22e4fcd63a487190f5b3823f06'
+API_KEY=os.environ.get("API_KEY")
 
 PIPERDRIVE_PERSON_BASE_URL='https://api.pipedrive.com/v1/persons/'
 PIPERDRIVE_PERSON_FIELD_BASE_URL='https://api.pipedrive.com/v1/personFields'
@@ -40,8 +40,8 @@ def getUpdatedPersonDataAndCustomField(data):
     return data
 
 def updatePersonById(id, data):
-    data.is_new_person=false
-    return data
+    data = requests.put(f"{PIPERDRIVE_PERSON_BASE_URL}{id}?api_token={API_KEY}", data)
+    return json.loads(data.content)
 
 def getCustomFieldInfo(data):
     allCustomField = requests.get(f"{PIPERDRIVE_PERSON_FIELD_BASE_URL}?api_token={API_KEY}")
